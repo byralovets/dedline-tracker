@@ -1,22 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const Deadline = require('../models/deadline').Deadline;
+// const multer  = require("multer");
 
 router.get('/', function (req, res) {
     if (req.session.user) {
 
-        // let userId = req.session.user.id;
+        let userId = req.session.user._id;
 
-        Deadline.find({}, function (err, deadlines) {
+        console.log("USER ID: " + userId);
 
-            // console.log("ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ ДЕДЛАЙНЫ \n" + deadlines);
-            //
-            // if (deadlines.length === 0) {
-            //     deadlines = undefined;
-            // } else {
-            //     deadlines.forEach(deadline => console.log(deadline));
-            // }
-            console.log(req.session.user.name);
+        Deadline.find({ authorId: userId }, function (err, deadlines) {
+            // console.log("DEADLINE ID: " + deadlines[0]);
             res.render('deadlines', {deadlines: deadlines, name: req.session.user.name});
         });
         return;

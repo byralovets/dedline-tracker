@@ -4,6 +4,8 @@ const router = express.Router();
 router.get('/', function(req, res, next) {
   let name;
 
+  console.log(req.session);
+
   if (req.session.user) {
     name = req.session.user.name;
   }

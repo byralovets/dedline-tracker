@@ -31,15 +31,15 @@ router.post('/login', function (req, res, next) {
 
     if (!(email && password)) throw Error;
 
-    User.findOne({ email: email }, function (err, user) {
-       if (user) {
-           if (user.checkPassword(password)) {
-               req.session.user = user;
-               res.redirect('/deadlines');
-               return;
-           }
-       }
-       res.redirect('/auth/login');
+    User.findOne({email: email}, function (err, user) {
+        if (user) {
+            if (user.checkPassword(password)) {
+                req.session.user = user;
+                res.redirect('/deadlines');
+                return;
+            }
+        }
+        res.redirect('/auth/login');
     });
 });
 
@@ -66,7 +66,7 @@ router.post('/register', function (req, res, next) {
     console.log("Регистрирую password: " + req.body.password);
     console.log("Регистрирую hashedPassword: " + password);
 
-    const user = new User({ name: name, email: email, password: password });
+    const user = new User({name: name, email: email, password: password});
 
     console.log(user);
 

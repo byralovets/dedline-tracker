@@ -11,9 +11,11 @@
     <link rel="stylesheet" href="../public/stylesheets/deadlines.css">
     <link rel="stylesheet" href="../public/stylesheets/logout.css">
 
-    <title><% if (deadline) { %>Новый дедлайн
+    <title>
+        <% if (deadline) { %>Новый дедлайн
         <% } else { %>Изменение дедлайна
-        <% } %></title>
+        <% } %>
+    </title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -74,7 +76,8 @@
         <h1 class="pb-3  pt-4 text-center">Дедлайн</h1>
     </section>
 
-    <form class="position-relative overflow-hidden container pt-2" action="<% if (deadline) { %>update
+    <form class="position-relative overflow-hidden container pt-2"
+          action="<% if (deadline) { %>update
             <% } else { %>new
             <% } %>" method="post">
         <div class="row row-cols-1 row-cols-md-auto">
@@ -85,11 +88,14 @@
                 <input name="title" class="form-control form-control-lg mb-3 col-9" type="text"
                        placeholder="Название дедлайна" aria-label=".form-control-lg example"
                        <% if (deadline) { %>value="<%- deadline.title %>"
-                        <% } %>>
+                        <% } %>
+                >
             </div>
             <div class="col col-md-3">
                 <input name="date" type="text" class="form-control form-control-lg mb-3 col-3" placeholder="Дата"
-                       required="" <% if (deadline) { %>value="<%- deadline.expirationDate %>"<% } %>>
+                       required="" <% if (deadline) { %>value="<%- deadline.expirationDate %>"
+                        <% } %>
+                >
             </div>
         </div>
 
