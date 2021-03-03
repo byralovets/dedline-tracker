@@ -7,8 +7,6 @@ router.get('/', function (req, res) {
 
         let userId = req.session.user._id;
 
-        console.log("USER ID: " + userId);
-
         Deadline.find({authorId: userId}, function (err, deadlines) {
             res.render('deadlines', {deadlines: deadlines, name: req.session.user.name});
         });
@@ -55,8 +53,6 @@ router.post('/new', function (req, res) {
         expirationDate: date
     });
 
-    console.log(deadline);
-
     deadline.save(function (err) {
         res.redirect('/deadlines');
     });
@@ -84,10 +80,8 @@ router.get('/update', function (req, res) {
     }
 
     const deadlineId = req.query.deadlineId;
-    console.log("ID: " + deadlineId);
 
     Deadline.findOne({_id: deadlineId}, function (err, deadline) {
-        console.log(deadline);
         deadline.description = deadline.description.replaceAll("<br>", "\r\n");
         res.render('edit', {deadline: deadline, name: req.session.user.name});
     });
@@ -101,9 +95,6 @@ router.post('/update', function (req, res) {
     }
 
     const deadlineId = req.body.deadlineId;
-
-    console.log("ID: " + deadlineId);
-
     const title = req.body.title;
     const date = req.body.date;
     const description = req.body.description.replaceAll("\r\n", "<br>");
