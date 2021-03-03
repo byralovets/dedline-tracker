@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="../public/stylesheets/deadlines.css">
     <link rel="stylesheet" href="../public/stylesheets/logout.css">
 
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(function() {
+            $("#datepicker").datepicker({
+                dateFormat: "dd.mm.yy"
+            });
+        });
+    </script>
+
+
     <title>
         <% if (deadline) { %>Новый дедлайн
         <% } else { %>Изменение дедлайна
@@ -75,7 +88,7 @@
                 >
             </div>
             <div class="col col-md-3">
-                <input name="date" type="text" class="form-control form-control-lg mb-3 col-3" placeholder="Сроки"
+                <input name="date" id="datepicker" type="text" class="form-control form-control-lg mb-3 col-3" placeholder="Сроки"
                        required="" <% if (deadline) { %>value="<%- deadline.expirationDate %>"
                         <% } %>
                 >
@@ -105,6 +118,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
         integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>
