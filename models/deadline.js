@@ -22,5 +22,4 @@ let schema = new Schema({
     }
 });
 
-
 exports.Deadline = mongoose.model('Deadline', schema);
