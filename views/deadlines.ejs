@@ -27,21 +27,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <ul class="navbar-nav me-auto">
-                    <!-- <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="./user-tests.html">Мои тесты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./user-results.html">Мои результаты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Статистика</a>
-                    </li> -->
                 </ul>
 
                 <div class="row row-cols-1 row-cols-md-auto px-2 px-md-0">
-                    <!-- <div class="">
-
-                    </div> -->
                     <a class="btn btn-light btn-outline-success px-0 col px-2" href="deadlines/new">
                         Новый дедлайн
                     </a>
@@ -53,8 +41,6 @@
                         </a>
                         <ul class="dropdown-menu" style="min-width: 0 !important;"
                             aria-labelledby="dropdownMenuButton1">
-                            <!-- <li><a class="dropdown-item" href="./account.html">Настройки профиля</a></li>
-                            <li><a class="dropdown-item" href="./adminpanel.html">Панель администратора</a></li> -->
                             <li><a class="dropdown-item" id="logout" href="/logout">Выйти</a></li>
                         </ul>
                     </div>
@@ -89,13 +75,10 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="m-0"><%- title %></h5>
-                            <!--                            <span class="badge bg-warning text-dark p-2">Просрочено</span>-->
                         </div>
                         <div class="card-body">
-                            <!-- <h5 class="card-title">Card title</h5> -->
                             <p class="card-text text-left "><%- description %></p>
-                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                            <div class="btn-group">
+                            <div class="btn-group mb-3">
                                 <form action="/deadlines/update" method="get">
                                     <input type="hidden" name="deadlineId" value="<%- deadlineId %>">
                                     <button type="submit" class="btn btn-sm btn-outline-success">Изменить</button>
@@ -108,141 +91,16 @@
                         </div>
                         <div class="card-footer text-muted">
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="m-0">c <%- new Date(creationDate * 1000).getDate() %></p>
+                                <p class="m-0">c <%- creationDate %></p>
                                 <p class="m-0">до <%- expirationDate %></p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <% } %>
-                <!--<div class="col mb-4">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="m-0">Лаба №1 по СПП</h5>
-                            &lt;!&ndash; <span class="badge bg-warning text-dark p-2">Просрочено</span> &ndash;&gt;
-                        </div>
-                        <div class="card-body">
-                            &lt;!&ndash; <h5 class="card-title">Card title</h5> &ndash;&gt;
-                            <p class="card-text">Написать веб-приложение с рендерингом на сервере.</p>
-                            &lt;!&ndash; <a href="#" class="btn btn-primary">Go somewhere</a> &ndash;&gt;
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-success">Изменить</button>
-                                <button type="button" class="btn btn-sm btn-outline-danger">Удалить</button>
-                            </div>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="m-0">c 23.02.2021</p>
-                                <p class="m-0">до 23.03.2021</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="m-0">Лаба №1 по СПП</h5>
-                            &lt;!&ndash; <span class="badge bg-warning text-dark p-2">Просрочено</span> &ndash;&gt;
-                        </div>
-                        <div class="card-body">
-                            &lt;!&ndash; <h5 class="card-title">Card title</h5> &ndash;&gt;
-                            <p class="card-text">Написать веб-приложение с рендерингом на сервере.</p>
-                            &lt;!&ndash; <a href="#" class="btn btn-primary">Go somewhere</a> &ndash;&gt;
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-success">Изменить</button>
-                                <button type="button" class="btn btn-sm btn-outline-danger">Удалить</button>
-                            </div>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="m-0">c 23.02.2021</p>
-                                <p class="m-0">до 23.03.2021</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="m-0">Лаба №1 по СПП</h5>
-                            &lt;!&ndash; <span class="badge bg-warning text-dark p-2">Просрочено</span> &ndash;&gt;
-                        </div>
-                        <div class="card-body">
-                            &lt;!&ndash; <h5 class="card-title">Card title</h5> &ndash;&gt;
-                            <p class="card-text">Написать веб-приложение с рендерингом на сервере.</p>
-                            &lt;!&ndash; <a href="#" class="btn btn-primary">Go somewhere</a> &ndash;&gt;
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-success">Изменить</button>
-                                <button type="button" class="btn btn-sm btn-outline-danger">Удалить</button>
-                            </div>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="m-0">c 23.02.2021</p>
-                                <p class="m-0">до 23.03.2021</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="m-0">Лаба №1 по СПП</h5>
-                            &lt;!&ndash; <span class="badge bg-warning text-dark p-2">Просрочено</span> &ndash;&gt;
-                        </div>
-                        <div class="card-body">
-                            &lt;!&ndash; <h5 class="card-title">Card title</h5> &ndash;&gt;
-                            <p class="card-text">Написать веб-приложение с рендерингом на сервере.</p>
-                            &lt;!&ndash; <a href="#" class="btn btn-primary">Go somewhere</a> &ndash;&gt;
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-success">Изменить</button>
-                                <button type="button" class="btn btn-sm btn-outline-danger">Удалить</button>
-                            </div>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="m-0">c 23.02.2021</p>
-                                <p class="m-0">до 23.03.2021</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="m-0">Лаба №1 по СПП</h5>
-                            &lt;!&ndash; <span class="badge bg-warning text-dark p-2">Просрочено</span> &ndash;&gt;
-                        </div>
-                        <div class="card-body">
-                            &lt;!&ndash; <h5 class="card-title">Card title</h5> &ndash;&gt;
-                            <p class="card-text">Написать веб-приложение с рендерингом на сервере.</p>
-                            &lt;!&ndash; <a href="#" class="btn btn-primary">Go somewhere</a> &ndash;&gt;
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-success">Изменить</button>
-                                <button type="button" class="btn btn-sm btn-outline-danger">Удалить</button>
-                            </div>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="m-0">c 23.02.2021</p>
-                                <p class="m-0">до 23.03.2021</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
             </div>
         <% } %>
     </section>
-
-    <!-- <section class="position-relative overflow-hidden container">
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-                <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-        </ul>
-    </section> -->
 </main>
 
 <footer class="footer mt-auto py-3 ">

@@ -1,5 +1,3 @@
-const crypto = require('crypto');
-
 const mongoose = require('../libs/mongoose');
 const Schema = mongoose.Schema;
 
@@ -14,8 +12,7 @@ let schema = new Schema({
         type: String,
     },
     creationDate: {
-        type: String,
-        default: Date.now
+        type: String
     },
     expirationDate: {
         type: String

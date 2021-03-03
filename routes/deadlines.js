@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Deadline = require('../models/deadline').Deadline;
-// const multer  = require("multer");
 
 router.get('/', function (req, res) {
     if (req.session.user) {
@@ -10,8 +9,7 @@ router.get('/', function (req, res) {
 
         console.log("USER ID: " + userId);
 
-        Deadline.find({ authorId: userId }, function (err, deadlines) {
-            // console.log("DEADLINE ID: " + deadlines[0]);
+        Deadline.find({authorId: userId}, function (err, deadlines) {
             res.render('deadlines', {deadlines: deadlines, name: req.session.user.name});
         });
         return;
@@ -27,24 +25,6 @@ router.get('/new', function (req, res) {
     }
 
     res.render('edit', {deadline: undefined, name: req.session.user.name});
-
-    /*const name = req.body.name;
-    console.log("Регистрирую имя: " + name);
-    const email = req.body.email;
-    console.log("Регистрирую email: " + email);
-    const password = md5(req.body.password);
-    console.log("Регистрирую password: " + req.body.password);
-    console.log("Регистрирую hashedPassword: " + password);
-
-    const user = new User({ name: name, email: email, password: password });
-
-    console.log(user);
-
-    user.save(function (err) {
-        req.session.user = user;
-        res.redirect('/deadlines');
-    });*/
-
 });
 
 router.post('/new', function (req, res) {
@@ -56,21 +36,28 @@ router.post('/new', function (req, res) {
     const title = req.body.title;
     const authorId = req.session.user;
     const date = req.body.date;
-    const description = req.body.description;
+    const description = req.body.description.replaceAll("\r\n", "<br>");
     const linkToFile = "#";
+
+    let creationDateFormatted = "";
+    let creationDate = new Date();
+
+    creationDateFormatted += ("00" + creationDate.getDate()).slice(-2)
+        + "." + ("00" + creationDate.getMonth() + 1).slice(-2)
+        + "." + ("0000" + creationDate.getFullYear()).slice(-4);
 
     const deadline = new Deadline({
         title: title,
         authorId: authorId,
         description: description,
         linkToFile: linkToFile,
+        creationDate: creationDateFormatted,
         expirationDate: date
     });
 
     console.log(deadline);
 
     deadline.save(function (err) {
-        // console.log(err);
         res.redirect('/deadlines');
     });
 });
@@ -84,10 +71,7 @@ router.post('/delete', function (req, res) {
 
     const deadlineId = req.body.deadlineId;
 
-    // console.log("ID: " + deadlineId);
-
     Deadline.remove({_id: deadlineId}, function (err) {
-        // console.log("УДАЛЕНО" + deadlineId);
     });
 
     res.redirect("/deadlines");
@@ -104,6 +88,7 @@ router.get('/update', function (req, res) {
 
     Deadline.findOne({_id: deadlineId}, function (err, deadline) {
         console.log(deadline);
+        deadline.description = deadline.description.replaceAll("<br>", "\r\n");
         res.render('edit', {deadline: deadline, name: req.session.user.name});
     });
 });
@@ -120,10 +105,8 @@ router.post('/update', function (req, res) {
     console.log("ID: " + deadlineId);
 
     const title = req.body.title;
-    // const authorId = req.session.user;
-    // console.log("Айди создателя: " + authorId);
     const date = req.body.date;
-    const description = req.body.description;
+    const description = req.body.description.replaceAll("\r\n", "<br>");
     const linkToFile = "#";
 
     Deadline.updateOne({_id: deadlineId}, {
@@ -131,21 +114,6 @@ router.post('/update', function (req, res) {
     }, null, function (err) {
         res.redirect("/deadlines");
     });
-
-    // Person.findOne({ _id: deadlineId }).then(doc => {
-    //     item = doc.items.id(itemId );
-    //     item["name"] = "new name";
-    //     item["value"] = "new value";
-    //     doc.save();
-    //
-    //     //sent respnse to client
-    // }).catch(err => {
-    //     console.log('Oh! Dark')
-    // });
-
-    // Deadline.remove({ _id: deadlineId }, function (err) {
-    //     console.log("УДАЛЕНО" + deadlineId);
-    // });
 });
 
 module.exports = router;

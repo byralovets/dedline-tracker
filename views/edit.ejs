@@ -31,27 +31,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <ul class="navbar-nav me-auto">
-                    <!-- <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="./user-tests.html">Мои тесты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./user-results.html">Мои результаты</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Статистика</a>
-                    </li> -->
                 </ul>
 
                 <div class="row row-cols-1 row-cols-md-auto px-2 px-md-0">
-                    <!-- <div class="">
-
-                    </div> -->
-                    <a class="btn btn-light btn-outline-success px-0 col px-2" href="#">
-                        <% if (deadline) { %>Новый дедлайн
-                        <% } else { %>Изменение дедлайна
-                        <% } %>
-                    </a>
-
                     <div class="dropdown px-0 col mt-2 mt-md-0">
                         <a class="btn btn-secondary ms-md-3 pb-2 dropdown-toggle" id="dropdownMenuButton1"
                            data-bs-toggle="dropdown" aria-expanded="false" href="#">
@@ -92,7 +74,7 @@
                 >
             </div>
             <div class="col col-md-3">
-                <input name="date" type="text" class="form-control form-control-lg mb-3 col-3" placeholder="Дата"
+                <input name="date" type="text" class="form-control form-control-lg mb-3 col-3" placeholder="Сроки"
                        required="" <% if (deadline) { %>value="<%- deadline.expirationDate %>"
                         <% } %>
                 >
@@ -102,24 +84,12 @@
         <textarea name="description" class="form-control mb-3 h-10" style="height: 250px;" aria-label="Описание"
                   placeholder="Описание дедлайна"><%- deadline ? deadline.description : "" %></textarea>
 
-        <input type="file" class="form-control mb-3" aria-label="Large file input example">
-
         <button type="submit" class="btn btn-primary">
             <% if (deadline) { %>Сохранить
             <% } else { %>Создать
             <% } %>
         </button>
     </form>
-
-    <!-- <section class="position-relative overflow-hidden container">
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-                <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-        </ul>
-    </section> -->
 </main>
 
 <footer class="footer mt-auto py-3 ">
